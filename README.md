@@ -2,6 +2,10 @@
 
 A custom Next.js storefront for Voyage Advent, prepared for Vercel with Supabase for catalogue management, staff authentication, product images and order requests.
 
+![Desktop preview](docs/preview-desktop.png)
+
+[Mobile preview](docs/preview-mobile.png)
+
 ## Included
 
 - Responsive black, warm gold and cream design, self-hosted typography and local product imagery.
@@ -51,6 +55,7 @@ The database tests run the supplied SQL in local PGlite with test Supabase roles
    ```
 
    There is no default admin and no public role assignment. Never use user-editable metadata for staff authorisation.
+
 5. Get the project URL, publishable key and server secret key from the project API settings. Set:
 
    ```dotenv
@@ -61,6 +66,7 @@ The database tests run the supplied SQL in local PGlite with test Supabase roles
    ```
 
    The server secret key can also be a legacy service-role key. **Never prefix it with `NEXT_PUBLIC_`, put it in browser code, or commit it.**
+
 6. Configure the Supabase Auth site URL for the deployed site. Test staff sign-in, image upload, a customer request and the complete order lifecycle.
 7. Review Security/Performance Advisors in Supabase after setup. Anonymous customers must not be able to query orders, audit records or staff membership.
 

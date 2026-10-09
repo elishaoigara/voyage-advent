@@ -1,0 +1,32 @@
+-- Reference catalogue. NULL stock means availability must be confirmed manually.
+-- Re-running never overwrites edits.
+insert into public.voyage_products (id,name,category,size,price,description,image,featured,collection,occasions,stock,active) values
+('kenya-cane','Kenya Cane','Spirits','750ml',650,'Kenyan classic for easy everyday pours.',null,false,'favourites',ARRAY['Weekend','Celebration']::text[],null,true),
+('kibao-vodka','Kibao Vodka','Vodka','250ml',250,'Accessible everyday vodka.','/images/kibao-vodka.jpg',false,'favourites',ARRAY['Weekend']::text[],null,true),
+('kibao-gin','Kibao Gin','Gin','250ml',250,'Straightforward Kenyan gin.','/images/kibao-gin.jpg',false,'favourites',ARRAY['Weekend']::text[],null,true),
+('gilbey-s-gin','Gilbey''s Gin','Gin','750ml',1450,'Familiar London-style gin.','/images/gilbey-s-gin.jpg',false,'favourites',ARRAY['Weekend','Celebration']::text[],null,true),
+('smirnoff-red','Smirnoff Red','Vodka','750ml',1500,'Versatile vodka for mixed drinks.','/images/smirnoff-red.jpg',false,'favourites',ARRAY['Weekend','Celebration']::text[],null,true),
+('chrome-gin','Chrome Gin','Gin','750ml',950,'Approachable gin for everyday G&T.','/images/chrome-gin.jpg',false,'favourites',ARRAY['Weekend']::text[],null,true),
+('richot-brandy','Richot Brandy','Brandy','750ml',1250,'Smooth familiar brandy.','/images/richot-brandy.jpg',false,'favourites',ARRAY['Slow Evening']::text[],null,true),
+('viceroy-brandy','Viceroy Brandy','Brandy','750ml',1650,'Classic Kenyan brandy.','/images/viceroy-brandy.jpg',false,'favourites',ARRAY['Slow Evening','Gifting']::text[],null,true),
+('captain-morgan-gold','Captain Morgan Gold','Rum','750ml',1850,'Warm spiced rum character.','/images/captain-morgan-gold.jpg',false,'favourites',ARRAY['Weekend','Celebration']::text[],null,true),
+('tusker-lager','Tusker Lager','Beer','500ml',220,'Kenyan lager classic.','/images/tusker-lager.jpg',false,'favourites',ARRAY['Weekend','Celebration']::text[],null,true),
+('tusker-cider','Tusker Cider','Cider','500ml',250,'Crisp and refreshing.','/images/tusker-cider.jpg',false,'favourites',ARRAY['Weekend']::text[],null,true),
+('4th-street-sweet-red','4th Street Sweet Red','Wine','750ml',900,'Approachable sweet red.','/images/4th-street-sweet-red.jpg',true,'favourites',ARRAY['Celebration','Gifting']::text[],null,true),
+('drostdy-hof-red','Drostdy-Hof Red','Wine','750ml',1000,'Easy wine for dinner.','/images/drostdy-hof-red.webp',false,'favourites',ARRAY['Slow Evening','Gifting']::text[],null,true),
+('savanna-dry','Savanna Dry','Cider','500ml',300,'Crisp weekend cider.','/images/savanna-dry.jpg',false,'favourites',ARRAY['Weekend']::text[],null,true),
+('johnnie-walker-black-label','Johnnie Walker Black Label','Whisky','750ml',4800,'Premium smoky blended Scotch.','/images/johnnie-walker-black-label.jpg',true,'discovery',ARRAY['Slow Evening','Gifting']::text[],null,true),
+('jameson-irish-whiskey','Jameson Irish Whiskey','Whisky','750ml',3600,'Smooth approachable Irish whiskey.','/images/jameson-irish-whiskey.jpg',true,'discovery',ARRAY['Slow Evening','Gifting']::text[],null,true),
+('hendrick-s-gin','Hendrick''s Gin','Gin','700ml',6200,'Distinctive premium gin.','/images/hendrick-s-gin.jpg',true,'discovery',ARRAY['Gifting','Celebration']::text[],null,true),
+('bacardi-carta-blanca','Bacardi Carta Blanca','Rum','750ml',2400,'Light clean rum for cocktails.','/images/bacardi-carta-blanca.webp',false,'discovery',ARRAY['Celebration','Weekend']::text[],null,true),
+('jack-daniel-s','Jack Daniel''s','Whisky','750ml',3900,'Recognisable Tennessee whiskey.','/images/jack-daniel-s.jpg',false,'discovery',ARRAY['Gifting','Slow Evening']::text[],null,true),
+('tanqueray-london-dry','Tanqueray London Dry','Gin','750ml',4200,'Classic London Dry profile.','/images/tanqueray-london-dry.jpg',false,'discovery',ARRAY['Celebration','Gifting']::text[],null,true),
+('absolut-vodka','Absolut Vodka','Vodka','750ml',2600,'Clean versatile premium vodka.','/images/absolut-vodka.png',false,'discovery',ARRAY['Celebration','Weekend']::text[],null,true),
+('martell-vs','Martell VS','Cognac','700ml',5500,'Polished cognac for gifting.','/images/martell-vs.jpg',false,'discovery',ARRAY['Gifting','Slow Evening']::text[],null,true),
+('casillero-del-diablo','Casillero del Diablo','Wine','750ml',1900,'Recognisable wine for dinners.','/images/casillero-del-diablo.jpg',false,'discovery',ARRAY['Gifting','Slow Evening']::text[],null,true),
+('premium-white-rum','Premium White Rum','Rum','750ml',3200,'Bright rum for cocktails.','/images/premium-white-rum.webp',false,'discovery',ARRAY['Celebration','Weekend']::text[],null,true),
+('keringet','Keringet','Water','1L',120,'Premium Kenyan bottled water.','/images/keringet.jpg',false,'favourites',ARRAY['Celebration','Weekend']::text[],null,true),
+('dasani','Dasani','Water','1L',100,'Everyday bottled water.','/images/dasani.jpg',false,'favourites',ARRAY['Celebration','Weekend']::text[],null,true),
+('quencher','Quencher','Water','1L',100,'Convenient bottled water.','/images/quencher.png',false,'favourites',ARRAY['Celebration','Weekend']::text[],null,true),
+('tonic-water','Tonic Water','Mixers','300ml',120,'Mixer for gin and spirit serves.','/images/tonic-water.jpg',false,'favourites',ARRAY['Weekend','Celebration']::text[],null,true)
+on conflict(id) do nothing;
