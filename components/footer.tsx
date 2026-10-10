@@ -43,7 +43,6 @@ export function Footer() {
           <Link href="/delivery">Delivery & collection</Link>
           <Link href="/help">Ordering & payment</Link>
           <Link href="/privacy">Privacy</Link>
-          <Link href="/admin">Staff sign in</Link>
         </div>
         <div className="footer-contact">
           <h4>LET’S TALK TASTE</h4>
