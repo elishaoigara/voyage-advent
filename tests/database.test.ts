@@ -104,6 +104,49 @@ test("Supabase SQL: role isolation, order lifecycle and atomic stock reservation
         await db.exec("reset role");
       },
     );
+    await t.test("only staff can read inactive products", async () => {
+      await db.query(
+        "update public.voyage_products set active=false where id=$1",
+        [product],
+      );
+      await db.exec("set role anon");
+      assert.equal(
+        (
+          await db.query("select id from public.voyage_products where id=$1", [
+            product,
+          ])
+        ).rows.length,
+        0,
+      );
+      await db.exec("reset role; set role authenticated");
+      await db.query("select set_config('request.jwt.claim.sub',$1,false)", [
+        other,
+      ]);
+      assert.equal(
+        (
+          await db.query("select id from public.voyage_products where id=$1", [
+            product,
+          ])
+        ).rows.length,
+        0,
+      );
+      await db.query("select set_config('request.jwt.claim.sub',$1,false)", [
+        admin,
+      ]);
+      assert.equal(
+        (
+          await db.query("select id from public.voyage_products where id=$1", [
+            product,
+          ])
+        ).rows.length,
+        1,
+      );
+      await db.exec("reset role");
+      await db.query(
+        "update public.voyage_products set active=true where id=$1",
+        [product],
+      );
+    });
     async function update(
       status: string,
       fee: number | null = 150,

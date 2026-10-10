@@ -44,6 +44,8 @@ The database tests run the supplied SQL in local PGlite with test Supabase roles
 
 ## Connect Supabase
 
+The Voyage Advent project was initialised on 10 October 2026. See [the connection record](docs/supabase-connection.md) for its project URL, verified checks and remaining deployment steps. **Do not rerun `setup.sql` on that project.** The instructions below also support a fresh, separate project.
+
 1. Create or select a **dedicated Voyage Advent project**. Do not run the schema against an unrelated application.
 2. In SQL Editor, run [`database/setup.sql`](database/setup.sql) **once**, then [`database/seed.sql`](database/seed.sql). The seed is safe to repeat and does not overwrite product edits.
 3. In Authentication > Users, create the owner's email/password user. Use a strong password. Disable public sign-ups; this release only needs staff accounts.

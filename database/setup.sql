@@ -27,8 +27,8 @@ revoke all on public.voyage_products from anon, authenticated;
 grant select on public.voyage_products to anon, authenticated;
 grant insert, update on public.voyage_products to authenticated;
 grant all on public.voyage_products to service_role;
-create policy "Public active catalogue" on public.voyage_products for select to anon, authenticated using (active);
-create policy "Staff catalogue read" on public.voyage_products for select to authenticated using (exists (select 1 from public.voyage_admins where user_id = (select auth.uid())));
+create policy "Public active catalogue" on public.voyage_products for select to anon using (active);
+create policy "Staff catalogue read" on public.voyage_products for select to authenticated using (active or exists (select 1 from public.voyage_admins where user_id = (select auth.uid())));
 create policy "Staff catalogue insert" on public.voyage_products for insert to authenticated with check (exists (select 1 from public.voyage_admins where user_id = (select auth.uid())));
 create policy "Staff catalogue update" on public.voyage_products for update to authenticated using (exists (select 1 from public.voyage_admins where user_id = (select auth.uid()))) with check (exists (select 1 from public.voyage_admins where user_id = (select auth.uid())));
 create index if not exists voyage_products_category on public.voyage_products(category) where active;
@@ -74,6 +74,7 @@ create index if not exists voyage_audit_order on public.voyage_audit(order_id,cr
 
 create table if not exists public.voyage_rate_limits (key text primary key, hits integer not null, expires_at timestamptz not null);
 alter table public.voyage_rate_limits enable row level security;
+-- Intentionally no client policies: only the server's service_role can access rate limits.
 revoke all on public.voyage_rate_limits from anon, authenticated;
 grant all on public.voyage_rate_limits to service_role;
 -- Only the trusted server can call these functions. SECURITY INVOKER preserves role permissions.
